@@ -9,10 +9,10 @@
 	<hr>
 	<script type="text/javascript">
 		document.getElementById('addArticleLink').onclick = function() {
-			window.location.href = window.location.origin + '/Bitbuck/codeIgniter/index.php/article/create'
+			window.location.href = window.location.origin + '/codeigniter/index.php/article/create'
 		}
 		document.getElementById('indexLink').onclick = function() {
-			window.location.href = window.location.origin + '/Bitbuck/codeIgniter/index.php'
+			window.location.href = window.location.origin + '/codeigniter/index.php'
 		}
 	</script>
 	<table class="table table-hover">

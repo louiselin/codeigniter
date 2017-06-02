@@ -27,10 +27,10 @@ class Program extends CI_Controller {
 		$data['content'] = $this->input->post('content', true);
 		$data['timestamp'] = $this->input->post('timestamp', true);
 		if ( ! $this->program_model->insert_data($data) ) {
-			echo '<script type="text/javascript">alert("新增失敗");window.location.href= window.location.origin + "/Bitbuck/codeIgniter/index.php/program";</script>';
+			echo '<script type="text/javascript">alert("新增失敗");window.location.href= window.location.origin + "/codeigniter/index.php/program";</script>';
 			return true;
 		}
-		echo '<script type="text/javascript">alert("新增成功");window.location.href= window.location.origin + "/Bitbuck/codeIgniter/index.php/program";</script>';
+		echo '<script type="text/javascript">alert("新增成功");window.location.href= window.location.origin + "/codeigniter/index.php/program";</script>';
 		// echo "新增成功";
 		return true;
 	}
@@ -47,7 +47,7 @@ class Program extends CI_Controller {
 	public function edit($id = null)
 	{
 		if ( ! $query = $this->program_model->select_data($id) ) {
-			echo '<script type="text/javascript">alert("查無此資料");window.location.href= window.location.origin + "/Bitbuck/codeIgniter/index.php/program";</script>';
+			echo '<script type="text/javascript">alert("查無此資料");window.location.href= window.location.origin + "/codeigniter/index.php/program";</script>';
 
 			// echo "查無此資料";
 			return true;
@@ -68,12 +68,12 @@ class Program extends CI_Controller {
  		];
 
 		if ( ! $this->program_model->update_data($data) ) {
-			echo '<script type="text/javascript">alert("更新失敗");window.location.href= window.location.origin + "/Bitbuck/codeIgniter/index.php/program";</script>';
+			echo '<script type="text/javascript">alert("更新失敗");window.location.href= window.location.origin + "/codeigniter/index.php/program";</script>';
 			// echo "更新失敗";
 
 			return true;
 		}
-		echo '<script type="text/javascript">alert("更新成功");window.location.href= window.location.origin + "/Bitbuck/codeIgniter/index.php/program";</script>';
+		echo '<script type="text/javascript">alert("更新成功");window.location.href= window.location.origin + "/codeigniter/index.php/program";</script>';
 
 		// echo "更新成功";
 		return true;
@@ -82,21 +82,41 @@ class Program extends CI_Controller {
 	public function delete($id = null)
 	{
 		if ( ! $query = $this->program_model->select_data($id) ) {
-			echo '<script type="text/javascript">alert("查無此資料");window.location.href= window.location.origin + "/Bitbuck/codeIgniter/index.php/program";</script>';
+			echo '<script type="text/javascript">alert("查無此資料");window.location.href= window.location.origin + "/codeigniter/index.php/program";</script>';
 
 			// echo "查無此資料";
 			return true;
 		}
 
 		if ( ! $this->program_model->delete_data($id) ) {
-			echo '<script type="text/javascript">alert("刪除失敗");window.location.href= window.location.origin + "/Bitbuck/codeIgniter/index.php/program";</script>';
+			echo '<script type="text/javascript">alert("刪除失敗");window.location.href= window.location.origin + "/codeigniter/index.php/program";</script>';
 
 			// echo "刪除失敗";
 			return true;
 		}
-		echo '<script type="text/javascript">alert("刪除成功");window.location.href= window.location.origin + "/Bitbuck/codeIgniter/index.php/program";</script>';
+		echo '<script type="text/javascript">alert("刪除成功");window.location.href= window.location.origin + "/codeigniter/index.php/program";</script>';
 
 		// echo "刪除成功";
+		return true;
+	}
+	public function savetheuploadedfile() {
+		$public_dir = "/home/louise/public_html/"; // change this to public dir path
+		if ($_FILES['file']['name']) {
+				if (!$_FILES['file']['error']) {
+						$name = md5(rand(100, 200));
+						$ext = explode('.', $_FILES['file']['name']);
+						$filename = $name . '.' . $ext[1];
+						$destination = $public_dir . $filename; //change path of the folder...
+						$location = $_FILES["file"]["tmp_name"];
+						move_uploaded_file($location, $destination);
+						// echo $destination;
+
+						echo 'http://localhost/~louise/' . $filename;
+				} else {
+						echo $message = 'The following error occured:  ' . $_FILES['file']['error'];
+				}
+		}
+
 		return true;
 	}
 }

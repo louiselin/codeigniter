@@ -8,7 +8,7 @@
 	<hr>
 	<script type="text/javascript">
 		document.getElementById('addArticleLink').onclick = function() {
-			window.location.href = window.location.origin + '/Bitbuck/codeIgniter/index.php/result'
+			window.location.href = window.location.origin + '/codeigniter/index.php/result'
 		}
 	</script>
 	<form action="" method="post">
@@ -33,12 +33,35 @@
 </section>
 <script type="text/javascript">
 	$(document).ready(function() {
-      $('#summernote').summernote({
-				height: 600,                 // set editor height
-			  minHeight: null,             // set minimum height of editor
-			  maxHeight: null,             // set maximum height of editor
-			  focus: true
-			});
+		$('#summernote').summernote({
+          	height: 600,
+			callbacks: {
+          		onImageUpload: function(files, editor, welEditable) {
+              		sendFile(files[0], editor, welEditable);
+          		}
+			}
+      });
+      function sendFile(file, editor, welEditable) {
+          data = new FormData();
+          data.append("file", file);//You can append as many data as you want. Check mozilla docs for this
+          $.ajax({
+              data: data,
+              type: "POST",
+              url: "/codeigniter/index.php/result/savetheuploadedfile",
+              cache: false,
+              contentType: false,
+              processData: false,
+              success: function(url) {
+					console.log(url)
+					$('#summernote').summernote("insertImage", url);
+				},
+				error: function (data) {
+								console.log("error");
+				                console.log(data);
+            	}
+          });
+      }
+
 			function addZero(i) {
 			    if (i < 10) {
 			        i = "0" + i;

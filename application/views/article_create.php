@@ -26,6 +26,35 @@
 </section>
 <script type="text/javascript">
 	$(document).ready(function() {
+
+		$('#summernote').summernote({
+          height: 600,
+					callbacks: {
+          	onImageUpload: function(files, editor, welEditable) {
+              	sendFile(files[0], editor, welEditable);
+          	}
+					}
+      });
+      function sendFile(file, editor, welEditable) {
+          data = new FormData();
+          data.append("file", file);//You can append as many data as you want. Check mozilla docs for this
+          $.ajax({
+              data: data,
+              type: "POST",
+              url: "/codeigniter/index.php/article/savetheuploadedfile",
+              cache: false,
+              contentType: false,
+              processData: false,
+              success: function(url) {
+					// console.log(url)
+					$('#summernote').summernote("insertImage", url);
+				},
+				error: function (data) {
+								console.log("error");
+				                console.log(data);
+            	}
+          });
+      }
       $('#summernote').summernote({
 				height: 600,                 // set editor height
 			  minHeight: null,             // set minimum height of editor
