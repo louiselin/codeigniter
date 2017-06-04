@@ -28,10 +28,10 @@ class Result extends CI_Controller {
     	$data['timestamp'] = $this->input->post('timestamp', true);
     	$data['pdflink'] = $this->input->post('pdflink', true);
 		if ( ! $this->result_model->insert_data($data) ) {
-			echo '<script type="text/javascript">alert("新增失敗");window.location.href= window.location.origin + "/codeigniter/index.php/result";</script>';
+			echo '<script type="text/javascript">alert("新增失敗");window.location.href= window.location.origin + "/codeigniter/result";</script>';
 			return true;
 		}
-		echo '<script type="text/javascript">alert("新增成功");window.location.href= window.location.origin + "/codeigniter/index.php/result"; </script>';
+		echo '<script type="text/javascript">alert("新增成功");window.location.href= window.location.origin + "/codeigniter/result"; </script>';
 		// echo "新增成功";
 		return true;
 	}
@@ -49,7 +49,7 @@ class Result extends CI_Controller {
 	{
 		if ( ! $query = $this->result_model->select_data($id) ) {
 			echo $id;
-			echo '<script type="text/javascript">alert("查無此資料");window.location.href= window.location.origin + "/codeigniter/index.php/result";</script>';
+			echo '<script type="text/javascript">alert("查無此資料");window.location.href= window.location.origin + "/codeigniter/result";</script>';
 
 			// echo "查無此資料";
 			return true;
@@ -71,12 +71,12 @@ class Result extends CI_Controller {
  		];
 
 		if ( ! $this->result_model->update_data($data) ) {
-			echo '<script type="text/javascript">alert("更新失敗");window.location.href= window.location.origin + "/codeigniter/index.php/result";</script>';
+			echo '<script type="text/javascript">alert("更新失敗");window.location.href= window.location.origin + "/codeigniter/result";</script>';
 			// echo "更新失敗";
 
 			return true;
 		}
-		echo '<script type="text/javascript">alert("更新成功");window.location.href= window.location.origin + "/codeigniter/index.php/result";</script>';
+		echo '<script type="text/javascript">alert("更新成功");window.location.href= window.location.origin + "/codeigniter/result";</script>';
 
 		// echo "更新成功";
 		return true;
@@ -85,26 +85,27 @@ class Result extends CI_Controller {
 	public function delete($id = null)
 	{
 		if ( ! $query = $this->result_model->select_data($id) ) {
-			echo '<script type="text/javascript">alert("查無此資料");window.location.href= window.location.origin + "/codeigniter/index.php/result";</script>';
+			echo '<script type="text/javascript">alert("查無此資料");window.location.href= window.location.origin + "/codeigniter/result";</script>';
 
 			// echo "查無此資料";
 			return true;
 		}
 
 		if ( ! $this->result_model->delete_data($id) ) {
-			echo '<script type="text/javascript">alert("刪除失敗");window.location.href= window.location.origin + "/codeigniter/index.php/result";</script>';
+			echo '<script type="text/javascript">alert("刪除失敗");window.location.href= window.location.origin + "/codeigniter/result";</script>';
 
 			// echo "刪除失敗";
 			return true;
 		}
-		echo '<script type="text/javascript">alert("刪除成功");window.location.href= window.location.origin + "/codeigniter/index.php/result";</script>';
+		echo '<script type="text/javascript">alert("刪除成功");window.location.href= window.location.origin + "/codeigniter/result";</script>';
 
 		// echo "刪除成功";
 		return true;
 	}
 
 	public function savetheuploadedfile() {
-		$public_dir = "/home/louise/public_html/"; // change this to public dir path
+		// $public_dir = "/home/louise/public_html/"; // change this to public dir path
+		$public_dir = 'public/images/';
 		if ($_FILES['file']['name']) {
 				if (!$_FILES['file']['error']) {
 						$name = md5(rand(100, 200));
@@ -115,7 +116,8 @@ class Result extends CI_Controller {
 						move_uploaded_file($location, $destination);
 						// echo $destination;
 
-						echo 'http://localhost/~louise/' . $filename;
+						// echo 'http://localhost/~louise/' . $filename;
+						echo 'http://localhost/codeigniter/public/images/' . $filename;
 				} else {
 						echo $message = 'The following error occured:  ' . $_FILES['file']['error'];
 				}

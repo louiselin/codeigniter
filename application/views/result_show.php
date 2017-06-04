@@ -17,11 +17,11 @@
 		<?= $query->content ?>
 
 	<br><br><br><br><br><br>
-	
+
 	<?php
 		$link = $query->pdflink;
 		if ($link != null) {
-			echo '<a class="btn btn-primary" href="'.$link.'">請先預覽pdf連結是否正確</a>';
+			echo '<a class="btn btn-primary" href="'.$link.'" target="_blank">請先預覽pdf連結是否正確</a>';
 		}
 		else {
 			// echo '<a class="btn btn-primary disabled" href="'+$link+'">無pdf連結</a>';

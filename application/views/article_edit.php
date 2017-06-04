@@ -44,7 +44,7 @@
           $.ajax({
               data: data,
               type: "POST",
-              url: "/codeigniter/index.php/article/savetheuploadedfile",
+              url: "/codeigniter/article/savetheuploadedfile",
               cache: false,
               contentType: false,
               processData: false,

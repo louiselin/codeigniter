@@ -88,13 +88,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <script type="text/javascript">
 	document.getElementById('addArticleLink').onclick = function() {
-		window.location.href = window.location.origin + '/codeigniter/index.php/article'
+		window.location.href = window.location.origin + '/codeigniter/article'
 	}
 	document.getElementById('addProgramLink').onclick = function() {
-		window.location.href = window.location.origin + '/codeigniter/index.php/program'
+		window.location.href = window.location.origin + '/codeigniter/program'
 	}
 	document.getElementById('addResultLink').onclick = function() {
-		window.location.href = window.location.origin + '/codeigniter/index.php/result'
+		window.location.href = window.location.origin + '/codeigniter/result'
 	}
 </script>
 </body>
