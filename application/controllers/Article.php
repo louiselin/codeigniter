@@ -104,7 +104,9 @@ class Article extends CI_Controller {
 	}
 	public function savetheuploadedfile() {
 		// $public_dir = "/home/louise/public_html/"; // change this to public dir path
-		$public_dir = 'public/images/';
+		$baseurl = base_url();
+		// $public_dir = 'public/images/';
+		$public_dir = $baseurl;
 		if ($_FILES['file']['name']) {
 				if (!$_FILES['file']['error']) {
 						$name = md5(rand(100, 200));
@@ -114,7 +116,7 @@ class Article extends CI_Controller {
 						$location = $_FILES["file"]["tmp_name"];
 						move_uploaded_file($location, $destination);
 						// echo $destination;
-						$baseurl = base_url();
+
 						echo $baseurl.'/public/images/' . $filename;
 				} else {
 						echo $message = 'The following error occured:  ' . $_FILES['file']['error'];
