@@ -24,6 +24,7 @@ class Program extends CI_Controller {
 			return true;
 		}
 		$data['title'] = $this->input->post('title', true);
+		$data['title_content'] = $this->input->post('title_content', true);
 		$data['content'] = $this->input->post('content', true);
 		$data['timestamp'] = $this->input->post('timestamp', true);
 		if ( ! $this->program_model->insert_data($data) ) {
@@ -63,6 +64,7 @@ class Program extends CI_Controller {
 		$data = [
 			'id' => $id,
 			'title' => $this->input->post('title', true),
+			'title_content' => $this->input->post('title_content', true),
 			'content' => $this->input->post('content', true),
 			'timestamp' => $this->input->post('timestamp', true)
  		];

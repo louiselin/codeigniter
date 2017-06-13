@@ -24,9 +24,10 @@ class Result extends CI_Controller {
 			return true;
 		}
 		$data['title'] = $this->input->post('title', true);
+		$data['title_content'] = $this->input->post('title_content', true);
 		$data['content'] = $this->input->post('content', true);
-    	$data['timestamp'] = $this->input->post('timestamp', true);
-    	$data['pdflink'] = $this->input->post('pdflink', true);
+  	$data['timestamp'] = $this->input->post('timestamp', true);
+  	$data['pdflink'] = $this->input->post('pdflink', true);
 		if ( ! $this->result_model->insert_data($data) ) {
 			echo '<script type="text/javascript">alert("新增失敗");window.location.href= window.location.origin + "/codeigniter/result";</script>';
 			return true;
@@ -65,6 +66,7 @@ class Result extends CI_Controller {
 		$data = [
 			'id' => $id,
 			'title' => $this->input->post('title', true),
+			'title_content' => $this->input->post('title_content', true),
 			'content' => $this->input->post('content', true),
 			'timestamp' => $this->input->post('timestamp', true),
      		'pdflink' => $this->input->post('pdflink', true)

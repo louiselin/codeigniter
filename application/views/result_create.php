@@ -12,6 +12,10 @@
 			<input type="text" class="form-control" name="title" required>
 		</div>
 		<div class="form-group">
+			<label for="">標題內容</label>
+			<textarea name="title_content" class="form-control" required></textarea>
+		</div>
+		<div class="form-group">
 			<label for="">內容</label>
 			<textarea name="content" id="summernote" class="form-control" required></textarea>
 		</div>

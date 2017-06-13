@@ -13,6 +13,9 @@
 	</script>
 	<h1 class="text-info text-center"><?= $query->title ?></h1>
 	<p style="float: right;"><?= $query->timestamp ?></p>
+	<br><br>
+	<h5>標題內容：<?= $query->title_content ?></h5>
+	<br>
 	<?= $query->content ?>
 </section>
 <?php require_once VIEWPATH.'_layouts/footer.php' ?>

@@ -17,6 +17,10 @@
 			<input type="text" class="form-control" name="title" value="<?= $query->title ?>" required>
 		</div>
 		<div class="form-group">
+			<label for="">標題內容</label>
+			<input type="text" class="form-control" name="title_content" value="<?= $query->title_content ?>" required>
+		</div>
+		<div class="form-group">
 			<label for="">內容</label>
 			<textarea name="content" id="summernote" cols="30" rows="10" class="form-control" required><?= $query->content?></textarea>
 		</div>
