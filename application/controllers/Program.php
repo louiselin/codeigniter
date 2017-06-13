@@ -114,7 +114,7 @@ class Program extends CI_Controller {
 						move_uploaded_file($location, $destination);
 						// echo $destination;
 
-						echo 'http://localhost/codeigniter/public/images/' . $filename;
+						echo 'http://oir.nccu.edu.tw/codeigniter/public/images/' . $filename;
 				} else {
 						echo $message = 'The following error occured:  ' . $_FILES['file']['error'];
 				}
