@@ -113,8 +113,8 @@ class Program extends CI_Controller {
 						$location = $_FILES["file"]["tmp_name"];
 						move_uploaded_file($location, $destination);
 						// echo $destination;
-
-						echo 'http://oir.nccu.edu.tw/codeigniter/public/images/' . $filename;
+						$baseurl = base_url();
+						echo $baseurl.'/public/images/' . $filename;
 				} else {
 						echo $message = 'The following error occured:  ' . $_FILES['file']['error'];
 				}

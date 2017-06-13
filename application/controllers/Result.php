@@ -119,7 +119,8 @@ class Result extends CI_Controller {
 						// echo $destination;
 
 						// echo 'http://localhost/~louise/' . $filename;
-						echo 'http://oir.nccu.edu.tw/codeigniter/public/images/' . $filename;
+						$baseurl = base_url();
+						echo $baseurl.'/public/images/' . $filename;
 				} else {
 						echo $message = 'The following error occured:  ' . $_FILES['file']['error'];
 				}
