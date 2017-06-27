@@ -11,7 +11,7 @@ class Result_model extends CI_Model{
 
 	public function select_all_data()
 	{
-		$query = $this->db->get( $this->table );
+		$query = $this->db->order_by("timestamp","desc")->get( $this->table );
 		return $query->result();
 	}
 

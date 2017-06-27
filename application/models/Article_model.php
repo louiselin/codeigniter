@@ -3,7 +3,7 @@
 class Article_model extends CI_Model{
 	protected $table = 'articles';
 	protected $primaryKey = 'id';
-	
+
 	function __construct()
 	{
 		parent::__construct();
@@ -11,7 +11,8 @@ class Article_model extends CI_Model{
 
 	public function select_all_data()
 	{
-		$query = $this->db->get( $this->table );
+		// $this->db->order_by("timestamp","desc");
+		$query = $this->db->order_by("timestamp","desc")->get( $this->table );
 		return $query->result();
 	}
 
