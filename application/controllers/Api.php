@@ -44,12 +44,12 @@ class Api extends REST_Controller
   }
   public function links_get()
   {
-    $query = $this->result_model->select_all_data();
+    $query = $this->link_model->select_all_data();
     $this->response($query);
   }
   public function link_get($id)
   {
-    $query = $this->result_model->select_data($id);
+    $query = $this->link_model->select_data($id);
     $this->response($query);
   }
 }
