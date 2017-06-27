@@ -8,7 +8,7 @@
 	<hr>
 	<script type="text/javascript">
 		document.getElementById('addArticleLink').onclick = function() {
-			window.location.href = window.location.origin + '/codeigniter/index.php/result'
+			window.location.href = window.location.origin + '/codeigniter/result'
 		}
 	</script>
 	<form action="" method="post">

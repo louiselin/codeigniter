@@ -1,14 +1,14 @@
 <?php require_once VIEWPATH.'_layouts/header.php' ?>
 <section class="container">
 	<fieldset>
-		<h1>執行專案
-			<a id="addArticleLink" class="btn btn-success">文章總覽</a>
+		<h1>常用連結
+			<a id="addLink" class="btn btn-success">文章總覽</a>
 		</h1>
 	</fieldset>
 	<hr>
 	<script type="text/javascript">
-		document.getElementById('addArticleLink').onclick = function() {
-			window.location.href = window.location.origin + '/codeigniter/program'
+		document.getElementById('addLink').onclick = function() {
+			window.location.href = window.location.origin + '/codeigniter/link'
 		}
 	</script>
 	<form action="" method="post">
@@ -17,12 +17,8 @@
 			<input type="text" class="form-control" name="title" value="<?= $query->title ?>" required>
 		</div>
 		<div class="form-group">
-			<label for="">標題內容</label>
-			<input type="text" class="form-control" name="title_content" value="<?= $query->title_content ?>" required>
-		</div>
-		<div class="form-group">
-			<label for="">內容</label>
-			<textarea name="content" id="summernote" cols="30" rows="10" class="form-control" required><?= $query->content?></textarea>
+			<label for="">圖片</label>
+			<textarea name="picture" id="summernote" class="form-control" value="<?php $query->picture ?>"></textarea>
 		</div>
 		<input type="text" class="form-control" name="timestamp" style="display:none;" required>
 		<div class="form-group">
@@ -34,12 +30,15 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#summernote').summernote({
-          height: 600,
-					callbacks: {
-          	onImageUpload: function(files, editor, welEditable) {
-              	sendFile(files[0], editor, welEditable);
-          	}
-					}
+          	height: 400,
+						toolbar : [
+								 ['picture',['picture']]
+						 ],
+						callbacks: {
+			          		onImageUpload: function(files, editor, welEditable) {
+			              		sendFile(files[0], editor, welEditable);
+			          		}
+						}
       });
       function sendFile(file, editor, welEditable) {
           data = new FormData();
@@ -47,12 +46,12 @@
           $.ajax({
               data: data,
               type: "POST",
-              url: "/codeigniter/program/savetheuploadedfile",
+              url: "/codeigniter/link/savetheuploadedfile",
               cache: false,
               contentType: false,
               processData: false,
               success: function(url) {
-					// console.log(url)
+					console.log(url)
 					$('#summernote').summernote("insertImage", url);
 				},
 				error: function (data) {
@@ -61,12 +60,7 @@
             	}
           });
       }
-      $('#summernote').summernote({
-				height: 600,                 // set editor height
-			  minHeight: null,             // set minimum height of editor
-			  maxHeight: null,             // set maximum height of editor
-			  focus: true
-			});
+
 			function addZero(i) {
 			    if (i < 10) {
 			        i = "0" + i;

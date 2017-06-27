@@ -8,7 +8,7 @@
 	<hr>
 	<script type="text/javascript">
 		document.getElementById('addArticleLink').onclick = function() {
-			window.location.href = window.location.origin + '/codeigniter/index.php/article'
+			window.location.href = window.location.origin + '/codeigniter/article'
 		}
 	</script>
 	<h1 class="text-info text-center"><?= $query->title ?></h1>

@@ -75,6 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<a id="addArticleLink" class="btn btn-success">最新消息</a>
 		<a id="addProgramLink" class="btn btn-success">執行專案</a>
 		<a id="addResultLink" class="btn btn-success">成果展示</a>
+		<a id="addLink" class="btn btn-success">常用連結</a>
 	</div>
 
 	<p class="footer">
@@ -95,6 +96,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	document.getElementById('addResultLink').onclick = function() {
 		window.location.href = window.location.origin + '/codeigniter/result'
+	}
+	document.getElementById('addLink').onclick = function() {
+		window.location.href = window.location.origin + '/codeigniter/link'
 	}
 </script>
 </body>

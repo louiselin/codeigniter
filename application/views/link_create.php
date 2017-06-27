@@ -1,40 +1,37 @@
 <?php require_once VIEWPATH.'_layouts/header.php' ?>
 <section class="container">
 	<fieldset>
-		<h1>執行專案
-			<a id="addArticleLink" class="btn btn-success">文章總覽</a>
+		<h1>常用連結
+			<a href="../link" class="btn btn-success">文章總覽</a>
 		</h1>
 	</fieldset>
 	<hr>
-	<script type="text/javascript">
-		document.getElementById('addArticleLink').onclick = function() {
-			window.location.href = window.location.origin + '/codeigniter/program'
-		}
-	</script>
 	<form action="" method="post">
 		<div class="form-group">
 			<label for="">標題</label>
-			<input type="text" class="form-control" name="title" value="<?= $query->title ?>" required>
+			<input type="text" class="form-control" name="title" required>
 		</div>
 		<div class="form-group">
-			<label for="">標題內容</label>
-			<input type="text" class="form-control" name="title_content" value="<?= $query->title_content ?>" required>
-		</div>
-		<div class="form-group">
-			<label for="">內容</label>
-			<textarea name="content" id="summernote" cols="30" rows="10" class="form-control" required><?= $query->content?></textarea>
+			<label for="">圖片</label>
+			<textarea name="picture" id="summernote" class="form-control" required></textarea>
+			<!-- <input type="file" name="picture" class="form-control" required> -->
 		</div>
 		<input type="text" class="form-control" name="timestamp" style="display:none;" required>
+
 		<div class="form-group">
 			<label for=""></label>
-			<input type="submit" name="送出"	 class="btn btn-primary">
+			<input type="submit" name="送出"	 class="btn btn-info">
 		</div>
 	</form>
 </section>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#summernote').summernote({
-          height: 600,
+
+ 		$('#summernote').summernote({
+          height: 400,
+					toolbar : [
+							 ['picture',['picture']]
+					 ],
 					callbacks: {
           	onImageUpload: function(files, editor, welEditable) {
               	sendFile(files[0], editor, welEditable);
@@ -47,7 +44,7 @@
           $.ajax({
               data: data,
               type: "POST",
-              url: "/codeigniter/program/savetheuploadedfile",
+              url: "/codeigniter/link/savetheuploadedfile",
               cache: false,
               contentType: false,
               processData: false,
@@ -61,12 +58,9 @@
             	}
           });
       }
-      $('#summernote').summernote({
-				height: 600,                 // set editor height
-			  minHeight: null,             // set minimum height of editor
-			  maxHeight: null,             // set maximum height of editor
-			  focus: true
-			});
+
+
+
 			function addZero(i) {
 			    if (i < 10) {
 			        i = "0" + i;

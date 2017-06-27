@@ -9,6 +9,7 @@ class Api extends REST_Controller
     $this->load->model('article_model');
     $this->load->model('program_model');
     $this->load->model('result_model');
+    $this->load->model('link_model');
     $this->output->set_header('Access-Control-Allow-Origin: *');
   }
   public function articles_get()
@@ -37,6 +38,16 @@ class Api extends REST_Controller
     $this->response($query);
   }
   public function result_get($id)
+  {
+    $query = $this->result_model->select_data($id);
+    $this->response($query);
+  }
+  public function links_get()
+  {
+    $query = $this->result_model->select_all_data();
+    $this->response($query);
+  }
+  public function link_get($id)
   {
     $query = $this->result_model->select_data($id);
     $this->response($query);
