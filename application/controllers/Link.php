@@ -26,6 +26,7 @@ class Link extends CI_Controller {
 		$data['title'] = $this->input->post('title', true);
   	$data['timestamp'] = $this->input->post('timestamp', true);
   	$data['picture'] = $this->input->post('picture', true);
+		$data['url'] = $this->input->post('url', true);
 		if ( ! $this->link_model->insert_data($data) ) {
 			echo '<script type="text/javascript">alert("新增失敗");window.location.href= window.location.origin + "/codeigniter/link";</script>';
 			return true;
@@ -65,7 +66,8 @@ class Link extends CI_Controller {
 			'id' => $id,
 			'title' => $this->input->post('title', true),
 			'timestamp' => $this->input->post('timestamp', true),
-     	'picture' => $this->input->post('picture', true)
+     	'picture' => $this->input->post('picture', true),
+			'url' => $this->input->post('url', true)
  		];
 
 		if ( ! $this->link_model->update_data($data) ) {

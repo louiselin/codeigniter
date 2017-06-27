@@ -16,8 +16,19 @@
 	<br><br>
 
 	<?= $query->picture ?>
+	<br><br><br><br><br><br>
 
-	
+	<?php
+		$link = $query->url;
+		if ($link != null) {
+			echo '<a class="btn btn-primary" href="'.$link.'" target="_blank">請先預覽url連結是否正確</a>';
+		}
+		else {
+			// echo '<a class="btn btn-primary disabled" href="'+$link+'">無pdf連結</a>';
+			echo '<a  class="btn btn-primary disabled href="#">無url</a>';
+		}
+	?>
+
 	<br><br>
 </section>
 <?php require_once VIEWPATH.'_layouts/footer.php' ?>

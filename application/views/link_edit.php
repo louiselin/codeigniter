@@ -20,6 +20,10 @@
 			<label for="">圖片</label>
 			<textarea name="picture" id="summernote" class="form-control" value="<?php $query->picture ?>"></textarea>
 		</div>
+		<div class="form-group">
+			<label for="">URL</label>
+			<input type="text" class="form-control" name="url" value="<?= $query->url ?>" required>
+		</div>
 		<input type="text" class="form-control" name="timestamp" style="display:none;" required>
 		<div class="form-group">
 			<label for=""></label>

@@ -16,6 +16,10 @@
 			<textarea name="picture" id="summernote" class="form-control" required></textarea>
 			<!-- <input type="file" name="picture" class="form-control" required> -->
 		</div>
+		<div class="form-group">
+			<label for="">URL</label>
+			<input type="text" class="form-control" name="url" required>
+		</div>
 		<input type="text" class="form-control" name="timestamp" style="display:none;" required>
 
 		<div class="form-group">
