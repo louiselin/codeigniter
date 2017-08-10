@@ -10,10 +10,18 @@ class Link extends CI_Controller {
 
 	public function index() // 預設載入
 	{
-		$query = $this->link_model->select_all_data();
-		$this->load->view('link_index', [
-			'query' => $query
-		]);
+		$account = $this->session->userdata('account');
+
+		if ($account){
+			$query = $this->link_model->select_all_data();
+			$this->load->view('link_index', [
+				'query' => $query
+			]);
+		} else {
+			$yourURL = '/codeigniter/auth';
+			echo ("<script>location.href='$yourURL';</script>");
+		}
+
 		return true;
 	}
 

@@ -10,10 +10,18 @@ class Result extends CI_Controller {
 
 	public function index() // 預設載入
 	{
-		$query = $this->result_model->select_all_data();
-		$this->load->view('result_index', [
-			'query' => $query
-		]);
+		$account = $this->session->userdata('account');
+
+		if ($account){
+			$query = $this->result_model->select_all_data();
+			$this->load->view('result_index', [
+				'query' => $query
+			]);
+		} else {
+			$yourURL = '/codeigniter/auth';
+			echo ("<script>location.href='$yourURL';</script>");
+		}
+
 		return true;
 	}
 

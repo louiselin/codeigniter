@@ -2,7 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
-
+	function __construct()
+  {
+      parent::__construct();
+			// $this->load->library('session');
+			// $this->load->model('auth_model');
+  }
 	/**
 	 * Index Page for this controller.
 	 *
@@ -20,6 +25,12 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$account = $this->session->userdata('account');
+		if ($account){
+			$this->load->view('welcome_message');
+		} else {
+			$yourURL = '/codeigniter/auth';
+			echo ("<script>location.href='$yourURL';</script>");
+		}
 	}
 }
