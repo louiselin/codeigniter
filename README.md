@@ -6,6 +6,8 @@
 ## 改資料庫設定
 
 ```config > database.php```
+
+
 |    table_name    | columns |
 | ---------- | --- |
 | article |  id, title, content, timestamp |
